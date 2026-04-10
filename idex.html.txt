@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClaimM4 - Electronics DIY</title>
+    <style>
+        /* CSS RESET & GLOBAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-teal: #65bca8;
+            --dark-bg: #000000;
+            --light-bg: #f4f4f4;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .btn {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 12px 24px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-teal {
+            background-color: var(--primary-teal);
+            color: var(--text-light);
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* NAVIGATION BAR */
+        nav {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .nav-btn {
+            background-color: var(--text-light);
+            color: var(--dark-bg);
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            justify-content: center;
+            padding: 80px 50px;
+            background-color: #ffffff;
+            position: relative;
+        }
+
+        .hero-container {
+            display: flex;
+            max-width: 1000px;
+            width: 100%;
+            position: relative;
+        }
+
+        .hero-image {
+            width: 60%;
+            height: 400px;
+            background-image: url('https://placehold.co/800x600/ddd/999?text=Workspace+Image');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-content {
+            background-color: #ffffff;
+            padding: 50px;
+            width: 50%;
+            position: absolute;
+            right: 0;
+            top: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-bottom: 10px solid var(--primary-teal);
+            border-right: 10px solid var(--primary-teal);
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* TRENDING BANNER */
+        .trending {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            padding: 60px 50px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .trending-container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trending-text h2 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .trending-text p {
+            font-size: 14px;
+            max-width: 500px;
+        }
+
+        /* REVIEWS GRID SECTION */
+        .reviews {
+            padding: 80px 50px;
+            display: flex;
+            justify-content: center;
+            background-color: #f9f9f9;
+        }
+
+        .reviews-container {
+            max-width: 1000px;
+            width: 100%;
+            display: flex;
+            gap: 50px;
+        }
+
+        .reviews-text {
+            flex: 1;
+        }
+
+        .reviews-text h2 {
+            font-size: 42px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .reviews-text p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .reviews-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .grid-item {
+            background-color: var(--primary-teal);
+            padding: 30px;
+            color: var(--dark-bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .grid-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .grid-item span {
+            font-size: 12px;
+        }
+
+        /* BOTTOM SPLIT SECTION */
+        .projects {
+            display: flex;
+            height: 400px;
+        }
+
+        .projects-teal {
+            background-color: var(--primary-teal);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .projects-teal h2 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .projects-teal p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .projects-image {
+            flex: 1;
+            background-image: url('https://placehold.co/800x600/ddd/999?text=Student+Image');
+            background-size: cover;
+            background-position: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">ClaimM4</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Tutorials ▾</a></li>
+            <li><a href="#">Reviews</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Arduino</a></li>
+            <li><a href="#">DIY</a></li>
+        </ul>
+        <a href="#" class="nav-btn">ASK A QUESTION</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-image"></div>
+            <div class="hero-content">
+                <h1>Electronic<br>FAQ</h1>
+                <p>Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras fermentum. Amet aliquam id diam maecenas ultricies. Vel turpis nunc eget lorem dolor sed viverra.</p>
+                <a href="#" class="btn">Learn more</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="trending">
+        <div class="trending-container">
+            <div class="trending-text">
+                <h2>TRENDING NOW</h2>
+                <p>See the most interesting DIY Projects, top videos, webinars, innovations and innovators, tech trends and many other information right now!</p>
+            </div>
+            <a href="#" class="btn btn-teal">View more</a>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="reviews-container">
+            <div class="reviews-text">
+                <h2>The 6 Best tools and accessories reviews</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="grid-item">
+                    <h3>Welding Gun</h3>
+                    <span>12 articles</span>
+                </div>
+                <div class="grid-item">
+                    <h3>Ozone Generator</h3>
+                    <span>8 articles</span>
+                </div>
+                <div class="grid-item">
+                    <h3>Socket Organizer</h3>
+                    <span>10 articles</span>
+                </div>
+                <div class="grid-item">
+                    <h3>Gaming Mouses</h3>
+                    <span>6 articles</span>
+                </div>
+                <div class="grid-item">
+                    <h3>Soldering Iron Kits</h3>
+                    <span>2 articles</span>
+                </div>
+                <div class="grid-item">
+                    <h3>Resistor Kits</h3>
+                    <span>9 articles</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects">
+        <div class="projects-teal">
+            <h2>150+</h2>
+            <p>Electronics Projects for<br>Engineering Students</p>
+            <a href="#" class="btn">Learn more</a>
+        </div>
+        <div class="projects-image"></div>
+    </section>
+
+</body>
+</html>
